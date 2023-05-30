@@ -2,8 +2,8 @@ from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 import subprocess
-import os
-import glob
+import os, glob
+
 app = Flask(__name__)
 img_path = '/home/my_hands_on/static/'
 
@@ -23,7 +23,7 @@ def upload_file():
 @app.route('/view')
 def view_thumbs():
    file_list = []
-   image_names = glob.glob('/home/my_hands_on/static/*_thumb.*')
+   image_names = glob.glob(img_path + '*_thumb.*')
 
    for i, name in enumerate(image_names):
       filename = os.path.basename(name)
